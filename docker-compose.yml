@@ -12,7 +12,7 @@ services:
     container_name: mariadb
     hostname: mariadb
     ports:
-      - "5432:5432"
+      - "3306:3306"
 
   backend:
     container_name: backend
