@@ -26,6 +26,15 @@ services:
     depends_on:
       - mariadb
 
+  composer:
+    restart: 'no'
+    image: composer:latest
+    command: install
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - backend
+
   frontend:
       container_name: frontend
       build:
