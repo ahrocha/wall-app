@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+
+  mariadb:
+    image: mariadb
+    volumes:
+      - "./database_scripts:/docker-entrypoint-initdb.d/"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    container_name: mariadb
+    hostname: mariadb
+    ports:
+      - "3306:3306"
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    restart: unless-stopped
+    ports: 
+     - 8080:80
+    volumes:
+      - ./backend:/var/www/backend
+    depends_on:
+      - mariadb
+
+  frontend:
+      container_name: frontend
+      build:
+          context: ./frontend
+          dockerfile: Dockerfile
+      volumes:
+          - './frontend:/app'
+          - '/app/node_modules'
+      ports:
+          - '3000:3000'
+      environment:
+          - NODE_ENV=development
+      depends_on:
+          - backend
