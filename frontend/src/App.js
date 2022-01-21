@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import logo from './logo.svg';
 import Login from './components/Login'
+import Register from './components/Register'
 import './App.css';
 
 const App = () => {
@@ -24,7 +25,9 @@ const App = () => {
       <div>
         <Router>
       <Routes>
+        <Route exact path='/' />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
       </Routes>
       </Router>
       </div>
