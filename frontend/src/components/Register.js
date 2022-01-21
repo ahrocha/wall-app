@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Register = (props) => {
     const [home, setHome] = React.useState(false);
@@ -24,8 +24,7 @@ const Register = (props) => {
                         if (response.status == 201) {
                             setHome(true);
                         }
-                        console.log(response.status);
-                        console.log('recebeu');
+                        console.log(response);
                     });
             });
         }
@@ -70,7 +69,6 @@ const Register = (props) => {
                 />
                 <button type="submit">Register</button>
             </form>
-            <br /><br /><br /><br /><br />
         </div>
     );
 }

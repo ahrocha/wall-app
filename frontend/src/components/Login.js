@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Routes, Redirect, Route , Navigate} from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 
 const Login = (props) => {
     const [home, setHome] = React.useState(false);
@@ -20,14 +20,12 @@ const Login = (props) => {
                         if (response.status == 200) {
                             setHome(true);
                         }
-                        console.log(response.status);
-                        console.log('recebeu');
+                        console.log(response);
                     });
 
             });
         }
     if (home === true) {
-        console.log('redirecionar');
         return (
                 <Navigate to="/" replace />
         )
