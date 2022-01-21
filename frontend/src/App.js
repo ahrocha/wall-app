@@ -1,7 +1,10 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import logo from './logo.svg';
+import Login from './components/Login'
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +21,13 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>
+        <Router>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+      </Routes>
+      </Router>
+      </div>
     </div>
   );
 }
