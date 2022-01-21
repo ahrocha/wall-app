@@ -1,10 +1,10 @@
 import React from 'react';
-import axios from 'axios';
+import apiClient from '../services/api';
 
 const Posts = () => {
     const [posts, setPosts] = React.useState([]);
     React.useEffect(() => {
-        axios.get('http://localhost:8080/api/post')
+        apiClient.get('http://localhost:8080/api/post')
             .then(response => {
                 setPosts(response.data);
             });

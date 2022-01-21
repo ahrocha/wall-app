@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-import Login from './components/Login'
-import Register from './components/Register'
-import Posts from './components/Posts'
+import Login from './components/Login';
+import Register from './components/Register';
+import Posts from './components/Posts';
+import User from './components/User';
 import './App.css';
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         Add navigation
+        <User />
       </header>
       <div>
         <Router>

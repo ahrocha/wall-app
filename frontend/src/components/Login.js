@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import apiClient from '../services/api';
 import { Navigate} from 'react-router-dom';
 
 const Login = (props) => {
@@ -8,12 +8,12 @@ const Login = (props) => {
     const [password, setPassword] = React.useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get('http://localhost:8080/sanctum/csrf-cookie')
+        apiClient.get('http://localhost:8080/sanctum/csrf-cookie')
             .then( response => {
                 console.log(response);
                 console.log('mandou');
 
-                axios.post('http://localhost:8080/login', {
+                apiClient.post('http://localhost:8080/login', {
                         email: email,
                         password: password
                     }).then(response => {
