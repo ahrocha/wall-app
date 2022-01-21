@@ -34,6 +34,7 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        \URL::forceScheme('https');
         $this->reportable(function (Throwable $e) {
             //
         });

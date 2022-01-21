@@ -4,9 +4,13 @@ import apiClient from '../services/api';
 const Posts = () => {
     const [posts, setPosts] = React.useState([]);
     React.useEffect(() => {
-        apiClient.get('http://localhost:8080/api/post')
+        apiClient.get('/api/post')
             .then(response => {
                 setPosts(response.data);
+                apiClient.get('/api/user')
+                .then(response => {
+                    console.log(response);
+                });
             });
     }, []);
     const postList = posts.map((post) => 

@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import apiClient from '../services/api';
 import { Navigate } from 'react-router-dom';
 
 const Register = (props) => {
@@ -10,12 +10,12 @@ const Register = (props) => {
     const [password_confirmation, setPasswordConfirmation] = React.useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.get('http://localhost:8080/sanctum/csrf-cookie')
+        apiClient.get('sanctum/csrf-cookie')
             .then( response => {
                 console.log(response);
                 console.log('mandou');
 
-                axios.post('http://localhost:8080/register', {
+                apiClient.post('/register', {
                         email: email,
                         password: password,
                         password_confirmation: password_confirmation,

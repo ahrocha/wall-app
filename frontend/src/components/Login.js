@@ -8,18 +8,23 @@ const Login = (props) => {
     const [password, setPassword] = React.useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        apiClient.get('http://localhost:8080/sanctum/csrf-cookie')
+        apiClient.get('/sanctum/csrf-cookie')
             .then( response => {
                 console.log(response);
                 console.log('mandou');
 
-                apiClient.post('http://localhost:8080/login', {
+                apiClient.post('/login', {
                         email: email,
                         password: password
                     }).then(response => {
                         if (response.status == 200) {
                             setHome(true);
+                            apiClient.get('/api/user').then(response => {
+                                console.log(response);
+                            });
                         }
+                        console.log(response);
+                    }).catch(response => {
                         console.log(response);
                     });
 
