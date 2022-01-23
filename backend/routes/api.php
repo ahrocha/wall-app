@@ -20,7 +20,4 @@ Route::middleware('auth:web')->get('/user', function (Request $request) {
 
 Route::get('/post', 'App\Http\Controllers\PostController@index');
 
-
-Route::get('/me', function(Request $request) {
-    return json_encode(['sucesso' => true]);
-})->middleware(['auth']);
+Route::middleware('auth:web')->post('/post', 'App\Http\Controllers\PostController@store');

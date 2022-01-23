@@ -10,24 +10,16 @@ const Login = (props) => {
         e.preventDefault();
         apiClient.get('/sanctum/csrf-cookie')
             .then( response => {
-                console.log(response);
-                console.log('mandou');
-
                 apiClient.post('/login', {
                         email: email,
                         password: password
                     }).then(response => {
-                        if (response.status == 200) {
+                        if (response.status === 200) {
                             setHome(true);
-                            apiClient.get('/api/user').then(response => {
-                                console.log(response);
-                            });
                         }
-                        console.log(response);
                     }).catch(response => {
                         console.log(response);
                     });
-
             });
         }
     if (home === true) {
@@ -57,7 +49,6 @@ const Login = (props) => {
                 />
                 <button type="submit">Login</button>
             </form>
-            <br /><br /><br /><br /><br />
         </div>
     );
 }
