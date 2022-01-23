@@ -10,24 +10,27 @@ const Register = (props) => {
     const [password_confirmation, setPasswordConfirmation] = React.useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
-        apiClient.get('sanctum/csrf-cookie')
-            .then( response => {
-                console.log(response);
-                console.log('mandou');
-
-                apiClient.post('/register', {
-                        email: email,
-                        password: password,
-                        password_confirmation: password_confirmation,
-                        name: name
-                    }).then(response => {
-                        if (response.status == 201) {
-                            setHome(true);
-                        }
+        apiClient.get('/sanctum/csrf-cookie')
+            .then(response => {
+                apiClient.get('sanctum/csrf-cookie')
+                    .then(response => {
                         console.log(response);
+                        console.log('mandou');
+
+                        apiClient.post('/register', {
+                            email: email,
+                            password: password,
+                            password_confirmation: password_confirmation,
+                            name: name
+                        }).then(response => {
+                            if (response.status === 201) {
+                                setHome(true);
+                            }
+                            console.log(response);
+                        });
                     });
             });
-        }
+    }
     if (home === true) {
         return <Navigate to="/" replace />
     }
@@ -35,34 +38,34 @@ const Register = (props) => {
         <div>
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
-                <input 
+                <input
                     type="email"
-                    name="email" 
-                    placeholder="email" 
+                    name="email"
+                    placeholder="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
                 />
-                <input 
+                <input
                     type="name"
-                    name="name" 
-                    placeholder="Your name" 
+                    name="name"
+                    placeholder="Your name"
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
                 />
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="password" 
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
                 />
-                <input 
-                    type="password" 
-                    name="password_confirmation" 
-                    placeholder="Confirm your password" 
+                <input
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Confirm your password"
                     value={password_confirmation}
                     onChange={e => setPasswordConfirmation(e.target.value)}
                     required
