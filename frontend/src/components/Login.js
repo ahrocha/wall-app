@@ -20,7 +20,6 @@ const Login = (props) => {
                     }).catch(response => {
                         console.log(response);
                     });
-
             });
         }
     if (home === true) {
@@ -50,7 +49,6 @@ const Login = (props) => {
                 />
                 <button type="submit">Login</button>
             </form>
-            <br /><br /><br /><br /><br />
         </div>
     );
 }

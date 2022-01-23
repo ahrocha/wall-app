@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response()->json(Post::all());
+        return response()->json(Post::orderByDesc('id')->get());
     }
 
     /**
@@ -35,7 +36,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->user_id = $request->user()->id;
+        $post->post = $request->input('post');
+        $post->save();
+        return response()->noContent(Response::HTTP_CREATED);
     }
 
     /**

@@ -8,11 +8,8 @@ const Posts = () => {
             .then(response => {
                 apiClient.get('/api/post')
                     .then(response => {
+                        console.log(response.data);
                         setPosts(response.data);
-                        apiClient.get('/api/user')
-                            .then(response => {
-                                console.log(response);
-                            });
                     });
             });
     }, []);
