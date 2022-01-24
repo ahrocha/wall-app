@@ -1,25 +1,33 @@
 import React from 'react';
 import apiClient from '../services/api';
+import { Navigate } from 'react-router-dom';
 
 const Post = (props) => {
     const [post, setPost] = React.useState("");
+    const [home, setHome] = React.useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         apiClient.get('/sanctum/csrf-cookie')
             .then( response => {
-                console.log(post);
                 apiClient.post('/api/post', {
                     post: post
                 }).then(response => {
-                    console.log(response);
-                    if (response.status === 200) {
-                        console.log(response);
+                    if (response.status === 201) {
+                        setHome(true);
                     }
                 }).catch(response => {
                     console.log(response);
                 });
             });
         }
+
+    if (home === true) {
+        return (
+            <Navigate to="/" replace />
+        )
+    }
+
     return (
         <div>
             <h2>Insert post</h2>

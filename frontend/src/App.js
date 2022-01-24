@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Register from './components/Register';
+import Post from './components/Post';
 import Posts from './components/Posts';
 import User from './components/User';
 import Navigation from './components/Navigation';
@@ -17,15 +18,28 @@ class App extends React.Component {
       user: []
     };
     this.handler = this.handler.bind(this);
-    this.logged = false;
+    this.logout = this.logout.bind(this);
+  }
+
+  logout() {
+    console.log(this.state);
+    this.state = {
+      logged: false,
+      user: []
+    };
+    console.log(this.state);
+    this.setState({
+      logged: false
+    });
   }
 
   handler(userData) {
-    if (this.logged === true) {
+
+    if (this.state.logged === true) {
       return;
     }
 
-    this.logged = true;
+    this.state.logged = true;
     this.setState({
       user: userData.name
     });
@@ -39,13 +53,14 @@ class App extends React.Component {
         </header>
         <div>
           <Router>
-            <Navigation logged={this.logged} />
-            <User logged={this.logged} action={this.handler} user={this.state.user} />
+            <Navigation logged={this.state.logged} />
+            <User logged={this.state.logged} action={this.handler} user={this.state.user} />
             <Routes>
-              <Route exact path='/' element={<Posts logged={this.logged} user={this.state.user} />} />
-              <Route path='/login' element={<Login logged={this.logged} user={this.state.user} />} />
-              <Route path='/logout' element={<Logout logged={this.logged} user={this.state.user} />} />
-              <Route path='/posts' element={<Posts logged={this.logged} user={this.state.user} />} />
+              <Route exact path='/' element={<Posts logged={this.state.logged} user={this.state.user} />} />
+              <Route path='/login' element={<Login logged={this.state.logged} user={this.state.user} action={this.handler} />} />
+              <Route path='/logout' element={<Logout logged={this.state.logged} user={this.state.user} action={this.logout} />} />
+              <Route path='/posts' element={<Posts logged={this.state.logged} user={this.state.user} />} />
+              <Route path='/post' element={<Post logged={this.state.logged} user={this.state.user} />} />
               <Route path='/register' element={<Register />} />
             </Routes>
           </Router>

@@ -6,7 +6,24 @@ const Login = (props) => {
     const [home, setHome] = React.useState(false);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+ 
+    if (home === true) {
+        return (
+            <Navigate to="/" replace />
+        )
+    }
+
+    if (props.logged === true) {
+        return (
+            <>
+                <h1>Login</h1>
+                <p>You're already logged.</p>
+            </>
+        );
+    }
+
     const handleSubmit = (e) => {
+        console.log(props);
         e.preventDefault();
         apiClient.get('/sanctum/csrf-cookie')
             .then(response => {
@@ -15,6 +32,7 @@ const Login = (props) => {
                     password: password
                 }).then(response => {
                     if (response.status === 200) {
+                        props.action(response.data);
                         setHome(true);
                     }
                 }).catch(response => {
@@ -22,19 +40,7 @@ const Login = (props) => {
                 });
             });
     }
-    if (home === true) {
-        return (
-            <Navigate to="/" replace />
-        )
-    }
-    if (props.logged === true) {
-        return (
-            <>
-                <h1>Login/Logoff</h1>
-                <p>You're already logged. </p>
-            </>
-        );
-    }
+
     return (
         <div>
             <h1>Login</h1>

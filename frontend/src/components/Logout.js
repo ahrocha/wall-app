@@ -12,6 +12,7 @@ const Logout = (props) => {
                 apiClient.post('/logout').then(response => {
                     console.log(response.status);
                     if (response.status === 204) {
+                        props.action();
                         setHome(true);
                     }
                 }).catch(response => {
@@ -28,7 +29,7 @@ const Logout = (props) => {
         return (
             <div>
                 <h1>Logout</h1>
-                <p>Do you confirm?</p>
+                <p>Do you confirm???</p>
                 <form onSubmit={handleSubmit}>
                     <button type="submit">Yes. Logout!</button>
                 </form>

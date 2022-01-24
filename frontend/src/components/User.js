@@ -3,7 +3,7 @@ import apiClient from '../services/api';
 import Post from './Post';
 
 const User = (props) => {
-
+console.log(props);
     if (!props.logged === true) {
         React.useEffect(() => {
             apiClient.get('/sanctum/csrf-cookie')
@@ -13,6 +13,8 @@ const User = (props) => {
                             if (response.status === 200) {
                                 props.action(response.data);
                             }
+                        }).catch(response => {
+                            console.log('not authenticated');
                         });
                 });
         }, []);
@@ -21,14 +23,13 @@ const User = (props) => {
     if (props.logged === true) {
         return (
             <div>
-                <p>Current user: {props.user} </p>
-                <Post />
+                <p>You're logged.</p>
             </div>
         );
     }
     return (
         <div>
-            <p>Loading</p>
+            <p>Please log in.</p>
         </div>
     );
 }
