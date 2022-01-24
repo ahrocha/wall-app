@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Register from './components/Register';
 import Posts from './components/Posts';
 import User from './components/User';
@@ -43,7 +44,7 @@ class App extends React.Component {
             <Routes>
               <Route exact path='/' element={<Posts logged={this.logged} user={this.state.user} />} />
               <Route path='/login' element={<Login logged={this.logged} user={this.state.user} />} />
-              <Route path='/logout' element={<Login logged={this.logged} user={this.state.user} />} />
+              <Route path='/logout' element={<Logout logged={this.logged} user={this.state.user} />} />
               <Route path='/posts' element={<Posts logged={this.logged} user={this.state.user} />} />
               <Route path='/register' element={<Register />} />
             </Routes>

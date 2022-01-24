@@ -9,7 +9,7 @@ const Navigation = (props) => {
       <div className='menu'>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/posts'>Posts</NavLink>
-        <NavLink to='/login'>Logoff</NavLink>
+        <NavLink to='/logout'>Logout</NavLink>
       </div>
     );
   }
@@ -17,7 +17,7 @@ const Navigation = (props) => {
     <div className='menu'>
       <NavLink to='/'>Home</NavLink>
       <NavLink to='/posts'>Posts</NavLink>
-      <NavLink to='/login'>login</NavLink>
+      <NavLink to='/login'>Login</NavLink>
     </div>
   );
 }
