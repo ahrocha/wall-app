@@ -9,4 +9,4 @@ RUN npm install -g npm@8.3.2
 RUN npm install
 RUN npm install react-scripts@3.3.1 -g
 
-CMD ["npm", "run", "watch"]
+CMD ["npm", "start"]

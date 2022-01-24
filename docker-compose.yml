@@ -25,6 +25,8 @@ services:
       - ./backend:/var/www/backend
     depends_on:
       - mariadb
+    environment:
+      - NODE_ENV=development
 
   composer:
     restart: 'no'
