@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return json_decode(['success' => true]);
+    return json_encode(['success' => true]);
 });
