@@ -2,31 +2,33 @@ import React from 'react';
 import apiClient from '../services/api';
 import Post from './Post';
 
-const User = () => {
-    const [logged, setLogged] = React.useState(false);
-    const [user, setUser] = React.useState([]);
-    React.useEffect(() => {
-        apiClient.get('/sanctum/csrf-cookie')
-            .then(response => { });
-        apiClient.get('/api/user')
-            .then(response => {
-                if (response.status === 200) {
-                    setLogged(true);
-                    setUser(response.data);
-                }
-            });
-    }, []);
-    if (logged === true) {
+const User = (props) => {
+
+    if (!props.logged === true) {
+        React.useEffect(() => {
+            apiClient.get('/sanctum/csrf-cookie')
+                .then(response => {
+                    apiClient.get('/api/user')
+                        .then(response => {
+                            if (response.status === 200) {
+                                props.action(response.data);
+                            }
+                        });
+                });
+        }, []);
+    }
+
+    if (props.logged === true) {
         return (
             <div>
-                <h1>Current user: {user.name} </h1>
+                <p>Current user: {props.user} </p>
                 <Post />
             </div>
         );
     }
     return (
         <div>
-            <h1>User</h1>
+            <p>Loading</p>
         </div>
     );
 }

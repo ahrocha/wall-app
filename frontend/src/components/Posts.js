@@ -13,12 +13,19 @@ const Posts = () => {
                     });
             });
     }, []);
+    if (posts.length == 0) {
+        return (
+            <div>
+            <h1>Loading posts...</h1>
+        </div>
+        );
+    }
     const postList = posts.map((post) =>
         <li key={post.id}>{post.post}</li>
     );
     return (
         <div>
-            <h1>Posts</h1>
+            <h1>Last posts</h1>
             <ul>{postList}</ul>
         </div>
     );
