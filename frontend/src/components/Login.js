@@ -6,7 +6,7 @@ const Login = (props) => {
     const [home, setHome] = React.useState(false);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
- 
+
     if (home === true) {
         return (
             <Navigate to="/" replace />
@@ -42,27 +42,36 @@ const Login = (props) => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login</button>
-            </form>
+        <div className='row'>
+            <div className='col'></div>
+            <div className='col'>
+                <h1>Login</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            required
+                            className="form-control"
+                        />
+                    </div><div className="mb-3">
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            required
+                            className="form-control"
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
+                </form>
+            </div>
+            <div className='col'></div>
         </div>
     );
 }

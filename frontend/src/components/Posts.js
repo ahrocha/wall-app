@@ -16,12 +16,16 @@ const Posts = () => {
     if (posts.length == 0) {
         return (
             <div>
-            <h1>Loading posts...</h1>
-        </div>
+                <h1>Loading posts...</h1>
+            </div>
         );
     }
     const postList = posts.map((post) =>
-        <li key={post.id}>{post.post}</li>
+        <div key={post.id} className='card'>
+            <div className='card-body'>
+                {post.post}
+            </div>
+        </div>
     );
     return (
         <div>

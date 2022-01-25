@@ -38,6 +38,8 @@ const Register = (props) => {
         <div>
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <label htmlFor="email" className="form-label">Email address</label>
                 <input
                     type="email"
                     name="email"
@@ -45,7 +47,10 @@ const Register = (props) => {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
+                    className="form-control"
                 />
+                </div><div className="mb-3">
+                <label htmlFor="name" className="form-label">Name</label>
                 <input
                     type="name"
                     name="name"
@@ -53,7 +58,10 @@ const Register = (props) => {
                     value={name}
                     onChange={e => setName(e.target.value)}
                     required
+                    className="form-control"
                 />
+                </div><div className="mb-3">
+                <label htmlFor="password" className="form-label">Password</label>
                 <input
                     type="password"
                     name="password"
@@ -61,7 +69,10 @@ const Register = (props) => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     required
+                    className="form-control"
                 />
+                </div><div className="mb-3">
+                <label htmlFor="password_confirmation" className="form-label">Confirm the password</label>
                 <input
                     type="password"
                     name="password_confirmation"
@@ -69,8 +80,10 @@ const Register = (props) => {
                     value={password_confirmation}
                     onChange={e => setPasswordConfirmation(e.target.value)}
                     required
+                    className="form-control"
                 />
-                <button type="submit">Register</button>
+                </div>
+                <button type="submit" className='btn btn-primary'>Register</button>
             </form>
         </div>
     );
