@@ -17,6 +17,7 @@ const Navigation = (props) => {
     <div className='menu'>
       <NavLink to='/'>Home/Posts</NavLink>
       <NavLink to='/login'>Login</NavLink>
+      <NavLink to='/register'>Register</NavLink>
     </div>
   );
 }
