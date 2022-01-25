@@ -27,20 +27,20 @@ const Logout = (props) => {
     }
     if (props.logged === true) {
         return (
-            <div>
+            <div className='container text-center'>
                 <h1>Logout</h1>
-                <p>Do you confirm???</p>
+                <p>Do you confirm?</p>
                 <form onSubmit={handleSubmit}>
-                    <button type="submit">Yes. Logout!</button>
+                    <button type="submit" className="btn btn-primary">Yes. Logout!</button>
                 </form>
             </div>
         );
     }
     return (
-        <>
+        <div className='container text-center'>
             <h1>Login/Logoff</h1>
             <p>You're already logged out. </p>
-        </>
+        </div>
     );
 }
 

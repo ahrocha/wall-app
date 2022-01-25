@@ -47,3 +47,7 @@
 .container h1{
   text-align: center;
 }
+
+#logout.container {
+  text-align: center;
+}
