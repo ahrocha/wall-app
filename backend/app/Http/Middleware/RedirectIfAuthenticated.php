@@ -23,7 +23,6 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                var_dump($request->expectsJson());
                 if ($request->expectsJson()) {
                     return response()->json(['error' => 'Already authenticated.'], 200);
                 }
