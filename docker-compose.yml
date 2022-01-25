@@ -10,7 +10,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret
     container_name: mariadb
-    hostname: mariadb
     ports:
       - "3307:3306"
 
