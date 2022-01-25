@@ -14,9 +14,6 @@ const Register = (props) => {
             .then(response => {
                 apiClient.get('sanctum/csrf-cookie')
                     .then(response => {
-                        console.log(response);
-                        console.log('mandou');
-
                         apiClient.post('/register', {
                             email: email,
                             password: password,
@@ -26,13 +23,35 @@ const Register = (props) => {
                             if (response.status === 201) {
                                 setHome(true);
                             }
-                            console.log(response);
+                        }).catch(error => {
+                            if (error.response) {
+                                let errors = [];
+                                if (error.response.data.errors.email) {
+                                    errors.push(error.response.data.errors.email);
+                                }
+                                if (error.response.data.errors.password) {
+                                    errors.push(error.response.data.errors.password);
+                                }
+                                console.log(errors);
+                                if (errors.length > 0) {
+                                    alert(errors.join(' '));
+                                } else {
+                                    alert ('Unknown error.');
+                                }
+                            } else if (error.request) {
+                                alert('Error accessing the backend.');
+                            } else {
+                                alert('Error ' + error.message);
+                            }
                         });
                     });
             });
     }
     if (home === true) {
-        return <Navigate to="/" replace />
+        <div>
+            <h1>Registered</h1>
+            <p>An welcome email was sent. Please check your inbox.</p>
+        </div>
     }
     return (
         <div>
