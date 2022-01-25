@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use \Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -32,10 +34,17 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+        $this->sendWelcomeEmail($input['name'], $input['email']);
+
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+    }
+
+    public function sendWelcomeEmail($name, $email)
+    {
+        Mail::to($email)->send(new Welcome($name));
     }
 }
