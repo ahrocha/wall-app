@@ -10,6 +10,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
+RUN php artisan migrate
+
 CMD [ "php", "-S", "0.0.0.0:80", "public/index.php"]
 
 EXPOSE 80
