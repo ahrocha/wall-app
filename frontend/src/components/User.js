@@ -34,7 +34,7 @@ const User = (props) => {
     }
     return (
         <div>
-            <p>Please log in.</p>
+            <p>Please log in to write your post.</p>
         </div>
     );
 }
