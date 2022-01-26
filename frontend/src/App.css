@@ -27,7 +27,7 @@
 }
 
 .menu {
-  background-color: FFE194;
+  background-color: #FFE194;
 }
 .menu a {
   margin: 20px;
@@ -37,6 +37,7 @@
 
 .container {
   text-align: left;
+  background-color: #E8F6EF;
 }
 .container h1{
   text-align: center;
@@ -47,7 +48,7 @@
 }
 
 .card {
-  background-color: #E8F6EF;
+  background-color: #B8DFD8;
   border-color: #FFB319;
   margin-bottom: 20px;
 }
