@@ -24,7 +24,6 @@ const Register = (props) => {
                             name: name
                         }).then(response => {
                             if (response.status === 201) {
-                                console.log('recebeu 201');
                                 setHome(true);
                                 setLoading(false);
                             }
@@ -37,7 +36,7 @@ const Register = (props) => {
                                 if (error.response.data.errors.password) {
                                     errors.push(error.response.data.errors.password);
                                 }
-                                console.log(errors);
+
                                 if (errors.length > 0) {
                                     alert(errors.join(' '));
                                 } else {

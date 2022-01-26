@@ -9,7 +9,6 @@ const Posts = () => {
             .then(response => {
                 apiClient.get('/api/post')
                     .then(response => {
-                        console.log(response.data);
                         setPosts(response.data);
                     });
             });

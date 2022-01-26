@@ -22,12 +22,10 @@ class App extends React.Component {
   }
 
   logout() {
-    console.log(this.state);
     this.state = {
       logged: false,
       user: []
     };
-    console.log(this.state);
     this.setState({
       logged: false
     });

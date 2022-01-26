@@ -10,13 +10,19 @@ const Logout = (props) => {
         apiClient.get('/sanctum/csrf-cookie')
             .then(response => {
                 apiClient.post('/logout').then(response => {
-                    console.log(response.status);
                     if (response.status === 204) {
                         props.action();
                         setHome(true);
                     }
                 }).catch(response => {
-                    console.log(response);
+                    if (error.response) {
+                        alert('An error ocurred. Check logs.');
+                    } else if (error.request) {
+                        alert('Error accessing the backend.');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
+                    setLoading(false);
                 });
             });
     }

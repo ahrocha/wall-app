@@ -23,7 +23,6 @@ const Login = (props) => {
     }
 
     const handleSubmit = (e) => {
-        console.log(props);
         e.preventDefault();
         apiClient.get('/sanctum/csrf-cookie')
             .then(response => {
@@ -35,8 +34,14 @@ const Login = (props) => {
                         props.action(response.data);
                         setHome(true);
                     }
-                }).catch(response => {
-                    console.log(response);
+                }).catch(error => {
+                    if (error.response) {
+                        alert('An error ocurred. Check logs.');
+                    } else if (error.request) {
+                        alert('Error accessing the backend.');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
                 });
             });
     }
