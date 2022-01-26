@@ -8,7 +8,7 @@ services:
       - "./database_scripts:/docker-entrypoint-initdb.d/"
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: ${MARIADBPWD}
     container_name: mariadb
     hostname: mariadb
     ports:
