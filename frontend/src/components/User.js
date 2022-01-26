@@ -13,6 +13,9 @@ const User = (props) => {
                                 props.action(response.data);
                             }
                         }).catch(error => {
+                            if (error.response.status === 401) {
+                                return;
+                            }
                             if (error.response) {
                                 alert('An error ocurred. Check logs.');
                             } else if (error.request) {
