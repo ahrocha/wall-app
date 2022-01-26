@@ -27,7 +27,6 @@ services:
       - mariadb
     environment:
       - NODE_ENV=development
-    command: bash php artisan migrate
 
   composer:
     restart: 'no'
