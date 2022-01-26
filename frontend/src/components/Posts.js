@@ -31,7 +31,7 @@ const Posts = () => {
     return (
         <div>
             <h1>Last posts</h1>
-            <ul>{postList}</ul>
+            <div>{postList}</div>
         </div>
     );
 }

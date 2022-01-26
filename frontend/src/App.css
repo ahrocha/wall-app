@@ -2,21 +2,15 @@
   text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #FFB319;
   /* min-height: 50vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -33,7 +27,7 @@
 }
 
 .menu {
-  background-color: lightgray;
+  background-color: FFE194;
 }
 .menu a {
   margin: 20px;
@@ -50,4 +44,10 @@
 
 #logout.container {
   text-align: center;
+}
+
+.card {
+  background-color: #E8F6EF;
+  border-color: #FFB319;
+  margin-bottom: 20px;
 }
