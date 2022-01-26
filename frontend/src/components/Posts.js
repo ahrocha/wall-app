@@ -2,6 +2,7 @@ import React from 'react';
 import apiClient from '../services/api';
 
 const Posts = () => {
+    
     const [posts, setPosts] = React.useState([]);
     React.useEffect(() => {
         apiClient.get('/sanctum/csrf-cookie')
