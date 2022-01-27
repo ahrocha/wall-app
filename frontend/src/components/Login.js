@@ -6,6 +6,7 @@ const Login = (props) => {
     const [home, setHome] = React.useState(false);
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [loading, setLoading] = React.useState(false);
 
     if (home === true) {
         return (
@@ -23,6 +24,7 @@ const Login = (props) => {
     }
 
     const handleSubmit = (e) => {
+        setLoading(true);
         e.preventDefault();
         apiClient.get('/sanctum/csrf-cookie')
             .then(response => {
@@ -53,6 +55,7 @@ const Login = (props) => {
                     } else {
                         alert('Error: ' + error.message);
                     }
+                    setLoading(false);
                 });
             });
     }
@@ -84,7 +87,12 @@ const Login = (props) => {
                             className="form-control"
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">Login</button>
+                    <button
+                        disabled={loading}
+                        type="submit"
+                        className="btn btn-primary">
+                        Login
+                    </button>
                 </form>
             </div>
             <div className='col'></div>
