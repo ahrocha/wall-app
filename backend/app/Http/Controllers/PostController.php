@@ -54,7 +54,7 @@ class PostController extends Controller
         $post->user_id = $request->user()->id;
         $post->post = $request->input('post');
         $post->save();
-        return response()->noContent(Response::HTTP_CREATED);
+        return response()->json($post, Response::HTTP_CREATED);
     }
 
     /**
