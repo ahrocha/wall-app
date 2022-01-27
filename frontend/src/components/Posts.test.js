@@ -5,7 +5,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import Posts from './Posts';
 
 const server = setupServer(
-  rest.get('http://localhost:8080/api/post', (req, res, ctx) => {
+  rest.get(process.env.REACT_APP_BACKEND + '/api/post', (req, res, ctx) => {
     return res(ctx.json([{
       "id": 2,
       "created_at": "2022-01-27T13:13:20.000000Z",
@@ -28,7 +28,7 @@ const server = setupServer(
       }
     }]))
   }),
-  rest.get('http://localhost:8080/sanctum/csrf-cookie', (req, res, ctx) => {
+  rest.get(process.env.REACT_APP_BACKEND + '/sanctum/csrf-cookie', (req, res, ctx) => {
     return res(ctx.json(null));
   })
 );
