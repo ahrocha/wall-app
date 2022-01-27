@@ -9,7 +9,7 @@ const Post = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         apiClient.get('/sanctum/csrf-cookie')
-            .then( response => {
+            .then(response => {
                 apiClient.post('/api/post', {
                     post: post
                 }).then(response => {
@@ -26,7 +26,7 @@ const Post = (props) => {
                     }
                 });
             });
-        }
+    }
 
     if (home === true) {
         return (
@@ -38,14 +38,17 @@ const Post = (props) => {
         <div>
             <h2>Insert post</h2>
             <form onSubmit={handleSubmit}>
-                <textarea 
-                    name="post" 
-                    placeholder="post" 
-                    value={post}
-                    onChange={e => setPost(e.target.value)}
-                    required
-                />
-                <button type="submit">Insert</button>
+                <div className="mb-3">
+                    <textarea
+                        name="post"
+                        placeholder="post"
+                        value={post}
+                        onChange={e => setPost(e.target.value)}
+                        required
+                        className="form-control"
+                    />
+                </div>
+                <button type="submit" className='btn btn-primary'>Insert</button>
             </form>
         </div>
     );
