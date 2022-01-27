@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $return = Post::with(['user' => function($query) {
             $query->select('id','name');
-        }])->get();
+        }])->orderByDesc('id')->get();
         return response()->json($return);
     }
 
