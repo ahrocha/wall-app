@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+//use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -14,6 +15,19 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        $return = Post::with(['user' => function($query) {
+            $query->select('id','name');
+        }])->get();
+        return response()->json($return);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function all()
     {
         return response()->json(Post::orderByDesc('id')->get());
     }
