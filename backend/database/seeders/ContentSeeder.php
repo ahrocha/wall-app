@@ -21,7 +21,7 @@ class ContentSeeder extends Seeder
         $userId = User::insertGetId([
             'name' => 'Benjamin Franklin',
             'email' => 'benjaminfranklin@gmail.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('secret123'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
         Post::insert([

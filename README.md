@@ -13,7 +13,7 @@ backend: http://localhost:80/
 frontend: http://localhost:3000/
 mariadb: 3306
 
-* Both frontend/README.md and backend/README.mr have their default contents. So, some specifi instructions like ports or urls may not be the same of this project.
+* Both frontend/README.md and backend/README.md have their default contents. So, some specifi instructions like ports or urls may not be the same of this project.
 
 If you want to change the application ports, edit the 3 .env files, at root project directory and also backend and frontend directories:
 
@@ -42,6 +42,7 @@ docker exec -ti backend php artisan migrate:fresh --seed
 4) Running backend tests
 docker exec -ti backend php artisan test
 
+* Before run the tests, you must seed the database.
 
 5) Running frontend tests
 docker exec -ti frontend npm test

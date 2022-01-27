@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
+use App\Models\Post;
 use App\Providers\RouteServiceProvider;
 
 class SimpleTest extends TestCase
@@ -37,7 +38,7 @@ class SimpleTest extends TestCase
     {
         $response = $this->withHeaders([
             'Accept' => 'application/json'
-        ])->postJson('/login', ['email' => 'ahrocha@gmail.com', 'password' => 'secret123']);
+        ])->postJson('/login', ['email' => 'benjaminfranklin@gmail.com', 'password' => 'secret123']);
 
         $this->assertAuthenticated();
 
@@ -63,6 +64,7 @@ class SimpleTest extends TestCase
         ])->postJson('/api/post', [
             'post' => 'no random post text with random numbers ' . rand(1111, 99999)
         ]);
+        $postIdTest = $response->json()['id'];
         $response->assertStatus(201);
 
         $response = $this->withHeaders([
@@ -81,6 +83,8 @@ class SimpleTest extends TestCase
             'Accept' => 'application/json'
         ])->postJson('/logout');
         $response->assertStatus(204);
+sleep(10);
+        Post::destroy($postIdTest);
     }
 
     /**
