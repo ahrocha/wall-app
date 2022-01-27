@@ -12,7 +12,11 @@ const Posts = () => {
                     .then(response => {
                         setPosts(response.data);
                         setLoading(false);
+                    }).catch(error => {
+                        // show message
                     });
+            }).catch(error => {
+                // show message
             });
     }, []);
     if (posts.length === 0 && loading === true) {

@@ -24,6 +24,8 @@ const User = (props) => {
                                 alert('Error: ' + error.message);
                             }
                         });
+                }).catch(error => {
+                    // show message
                 });
         }, []);
     }
