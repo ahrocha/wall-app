@@ -36,7 +36,18 @@ const Login = (props) => {
                     }
                 }).catch(error => {
                     if (error.response) {
-                        alert('An error ocurred. Check logs.');
+                        let errors = [];
+                        if (error.response.data.errors.email) {
+                            errors.push(error.response.data.errors.email);
+                        }
+                        if (error.response.data.errors.password) {
+                            errors.push(error.response.data.errors.password);
+                        }
+                        if (errors.length > 0) {
+                            alert(errors.join(' '));
+                        } else {
+                            alert('Unknown error.');
+                        }
                     } else if (error.request) {
                         alert('Error accessing the backend.');
                     } else {
