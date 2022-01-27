@@ -43,5 +43,5 @@ docker exec -ti backend php artisan migrate:fresh --seed
 docker exec -ti backend php artisan test
 
 
-4) Running front tests
+5) Running frontend tests
 docker exec -ti frontend npm test
