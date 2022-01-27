@@ -52,3 +52,12 @@
   border-color: #FFB319;
   margin-bottom: 20px;
 }
+
+.card-text {
+  text-align: center;
+}
+
+.card-title {
+  text-align: right;
+  font-weight: bold;
+}

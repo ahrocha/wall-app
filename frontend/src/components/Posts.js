@@ -33,7 +33,12 @@ const Posts = () => {
     const postList = posts.map((post) =>
         <div key={post.id} className='card'>
             <div className='card-body'>
-                {post.post}
+                <div className='card-text quote'>
+                    <q>{post.post}</q>
+                </div>
+                <div className='card-title'>
+                    {post.user.name}
+                </div>
             </div>
         </div>
     );
